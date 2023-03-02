@@ -14,7 +14,7 @@ internal class Program
             .ConfigureServices(services => 
             {
                 // Add Dependencies
-                services.AddApplicationInsightsTelemetry();
+                //services.AddApplicationInsightsTelemetry();
 
             })
             .Build();
