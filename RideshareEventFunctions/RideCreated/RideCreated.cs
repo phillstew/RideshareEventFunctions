@@ -14,12 +14,12 @@ namespace RideshareEventFunctions.RideCreated
         }
 
         [Function("RideCreated")]
-        //[EventHubOutput("demohub", Connection = "AzureEventHubConnectionString")]
-        public void Run([EventHubTrigger("demohub", Connection = "AzureEventHubConnectionString", IsBatched = false)] string input)
+        [EventHubOutput("driverfound", Connection = "AzureEventHubConnectionString")]
+        public string Run([EventHubTrigger("ridecreated", Connection = "AzureEventHubConnectionString", IsBatched = false)] string input)
         {
             _logger.LogInformation($"First Event Hubs triggered message: {input}");
 
-            //return $"Finished running message with input {input}";
+            return $"Driver {input} found for ride";
         }
     }
 }
