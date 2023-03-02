@@ -1,0 +1,8 @@
+﻿{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "AzureEventHubConnectionString": "Endpoint=sb://pstewarttest.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=IqkxlawjLHWkaoIYUDc6XvWqJyOx0xEoU+AEhKQPNeQ="
+  }
+}
