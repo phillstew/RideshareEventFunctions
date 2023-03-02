@@ -13,7 +13,7 @@ namespace RideshareEventFunctions.DriverFound
             _logger = loggerFactory.CreateLogger<DriverFound>();
         }
 
-        [Function("RideCreated")]
+        [Function("DriverFound")]
         //[EventHubOutput("demohub", Connection = "AzureEventHubConnectionString")]
         public void Run([EventHubTrigger("driverfound", Connection = "AzureEventHubConnectionString", IsBatched = false)] string input)
         {
