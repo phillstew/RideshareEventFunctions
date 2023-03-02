@@ -12,8 +12,9 @@ internal class Program
         var host = new HostBuilder()
             .ConfigureFunctionsWorkerDefaults()
             .ConfigureServices(services => 
-            { 
+            {
                 // Add Dependencies
+                services.AddApplicationInsightsTelemetry();
 
             })
             .Build();
