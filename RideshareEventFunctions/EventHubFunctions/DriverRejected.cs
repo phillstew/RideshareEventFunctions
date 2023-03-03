@@ -25,7 +25,7 @@ namespace RideshareEventFunctions.EventHubFunctions
             }
             catch (Exception ex) 
             {
-                _logger.LogError(ex, "Event was unable to be deserealized into a DriverRejectedEvent");
+                _logger.LogError(ex, "Event was unable to be deserialized into a DriverRejectedEvent");
             }
 
             _logger.LogInformation($"DriverRejected event triggered.");

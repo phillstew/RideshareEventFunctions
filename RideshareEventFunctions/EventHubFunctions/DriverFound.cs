@@ -25,7 +25,7 @@ namespace RideshareEventFunctions.EventHubFunctions
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Event was unable to be deserealized into a DriverFoundEvent");
+                _logger.LogError(ex, "Event was unable to be deserialized into a DriverFoundEvent");
             }
 
             _logger.LogInformation($"Found a driver: {model.DriverId}");

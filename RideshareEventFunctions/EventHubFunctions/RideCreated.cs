@@ -27,7 +27,7 @@ namespace RideshareEventFunctions.EventHubFunctions
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Event was unable to be deserealized into a RideCreatedEvent");
+                _logger.LogError(ex, "Event was unable to be deserialized into a RideCreatedEvent");
             }
 
             _logger.LogInformation($"RideCreated function hit.");
