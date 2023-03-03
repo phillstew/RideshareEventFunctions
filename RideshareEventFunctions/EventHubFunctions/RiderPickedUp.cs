@@ -10,9 +10,9 @@ namespace RideshareEventFunctions.EventHubFunctions
     {
         private readonly ILogger _logger;
 
-        public RiderPickedUp(ILoggerFactory loggerFactory)
+        public RiderPickedUp(ILogger<RiderPickedUp> logger)
         {
-            _logger = loggerFactory.CreateLogger<RiderPickedUp>();
+            _logger = logger;
         }
 
         [Function("RiderPickedUp")]

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RideshareEventFunctions.Models.HubEvents
 {
-    internal class RiderPickedUpEvent
+    public class RiderPickedUpEvent
     {
         public int RideId { get; set; }
 

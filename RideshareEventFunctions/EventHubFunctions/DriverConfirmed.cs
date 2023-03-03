@@ -10,9 +10,9 @@ namespace RideshareEventFunctions.EventHubFunctions
     {
         private readonly ILogger _logger;
 
-        public DriverConfirmed(ILoggerFactory loggerFactory)
+        public DriverConfirmed(ILogger<DriverConfirmed> logger)
         {
-            _logger = loggerFactory.CreateLogger<DriverConfirmed>();
+            _logger = logger;
         }
 
         [Function("DriverConfirmed")]

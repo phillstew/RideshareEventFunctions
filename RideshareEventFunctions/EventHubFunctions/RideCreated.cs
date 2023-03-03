@@ -10,12 +10,10 @@ namespace RideshareEventFunctions.EventHubFunctions
     public class RideCreated
     {
         private readonly ILogger _logger;
-        //private readonly IRideShareEventProducer _eventProducer;
 
-        public RideCreated(ILoggerFactory loggerFactory, IRideShareEventProducer eventProducer)
+        public RideCreated(ILogger<RideCreated> logger)
         {
-            _logger = loggerFactory.CreateLogger<RideCreated>();
-            //_eventProducer = eventProducer;
+            _logger = logger;
         }
 
         [Function("RideCreated")]

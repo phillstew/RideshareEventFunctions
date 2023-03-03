@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RideshareEventFunctions.Models.HubEvents
 {
-    internal class DriverRejectedEvent
+    public class DriverRejectedEvent
     {
         public int DriverId { get; set; }
 

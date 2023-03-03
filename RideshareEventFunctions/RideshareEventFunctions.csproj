@@ -28,11 +28,4 @@
 	  </None>
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="EventHubFunctions\DriverConfirmed\" />
-	  <Folder Include="EventHubFunctions\DriverRejected\" />
-	  <Folder Include="EventHubFunctions\RideCompleted\" />
-	  <Folder Include="EventHubFunctions\RiderPickedUp\" />
-	</ItemGroup>
-
 </Project>

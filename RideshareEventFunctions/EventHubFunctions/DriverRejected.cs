@@ -10,9 +10,9 @@ namespace RideshareEventFunctions.EventHubFunctions
     {
         private readonly ILogger _logger;
 
-        public DriverRejected(ILoggerFactory loggerFactory)
+        public DriverRejected(ILogger<DriverRejected> logger)
         {
-            _logger = loggerFactory.CreateLogger<DriverConfirmed>();
+            _logger = logger;
         }
 
         [Function("DriverRejected")]

@@ -10,9 +10,9 @@ namespace RideshareEventFunctions.EventHubFunctions
     {
         private readonly ILogger _logger;
 
-        public DriverFound(ILoggerFactory loggerFactory)
+        public DriverFound(ILogger<DriverFound> logger)
         {
-            _logger = loggerFactory.CreateLogger<DriverFound>();
+            _logger = logger;
         }
 
         [Function("DriverFound")]
