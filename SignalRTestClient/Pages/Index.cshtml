@@ -12,11 +12,15 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
         let messages = document.querySelector('#messages');
-        let messages1 = document.querySelector('#messages-1');
-
+        
+        // The baseUrl of your azure functions you have deployed
+        // In a live environment instead of using axios to make the call to negotiate, 
+        // we will most likely be calling this function from the graphql so how we get 
+        // the access token and signalr url will be different
+        let baseUrl = "https://phill-testdev.azurewebsites.net"; 
         let userID = "phillID";
 
-        axios.get("https://phill-testdev.azurewebsites.net" + `/api/negotiate?userid=${userID}`).then(response => {
+        axios.get(baseUrl + `/api/negotiate?userid=${userID}`).then(response => {
             const options = {
                 accessTokenFactory: () => response.data.accessToken
             }
@@ -34,6 +38,9 @@
                 .then(
                     async () => {
                         console.log('ready...');
+
+                        // After the connection is enabled we will subscribe to a ride for updates.
+                        // The ride status group is currently in the format "ride-{id}"
                         var val = await connection.invoke("subscribeToRide", "ride-0", userID)
                             .catch(console.error);
                         console.log(val);
@@ -41,16 +48,5 @@
                 .catch(console.error);
         });
 
-        //const connection = new signalR.HubConnectionBuilder()
-        //    .withUrl("http://localhost:7071/api/negotiate")
-        //    .configureLogging(signalR.LogLevel.Information)
-        //    .build();
-
-        //connection.on('ride-0', (message) => {
-        //    document.getElementById("messages").innerHTML = message;
-        //});
-
-        //connection.start()
-        //    .catch(console.error);
     </script>
 </div>
