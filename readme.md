@@ -51,6 +51,21 @@ Included in this repository are two test projects to help simulate the sending o
 
 This is a default asp.net web application with one exception, under `Pages > Index.cshtml` page I have included a sample for connecting to a signalr client and receiving updates to an ride's state. 
 
+In order to run and test the client you need to have your azure functions deployed to azure. When you have them deployed you need to add an upstream url by doing the following:
+
+- First go to the Function App you have created and deployed your functions to
+- Copy the Function URL and save it for later (You will use this url in `index.cshtml` to call the negotiate function, so add it there too!)
+- Go to `Functions > App Keys`
+- Copy the signalr-extension app key and save it for later
+- Navigate to your SignalR Service in Azure
+- Go to `Settings > Settings`
+- In the upstream urls, using the information from the function app, add 
+`
+<azure function base url>/runtime/webhooks/signalr?<azure function app key>
+`
+- Click save. Once the signalr service is updated you should be able to run the test client
+- Check the web developer tools in your browser to make sure there are no errors in the console and that it has connected correctly
+
 ### EventHubTestConsole
 
 This is a basic console application that will help you send out a simple message to an event hub namespace. To use this with the Event Hub you have set up above, you just need to update the connection string in the code with the one you have created:
