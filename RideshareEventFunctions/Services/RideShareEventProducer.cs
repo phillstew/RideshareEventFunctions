@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using RideshareEventFunctions.Configs;
 using RideshareEventFunctions.Services.Interfaces;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,12 +17,12 @@ namespace RideshareEventFunctions.Services
     internal class RideShareEventProducer : IRideShareEventProducer
     {
         private readonly EventHubsConfig _config;
-        private readonly Dictionary<string, EventHubProducerClient> _eventHubClients;
+        private readonly ConcurrentDictionary<string, EventHubProducerClient> _eventHubClients;
 
         public RideShareEventProducer(IConfiguration config)
         {
             _config = new EventHubsConfig { AzureEventHubConnectionString = config["AzureEventHubConnectionString"] };
-            _eventHubClients = new Dictionary<string, EventHubProducerClient>();
+            _eventHubClients = new ConcurrentDictionary<string, EventHubProducerClient>();
         }
 
         public async Task SendEvent<T>(string hubName, T eventToSend)
@@ -36,7 +37,7 @@ namespace RideshareEventFunctions.Services
                 client = new EventHubProducerClient(
                     _config.AzureEventHubConnectionString,
                     hubName);
-                _eventHubClients.Add(hubName, client);
+                _eventHubClients.TryAdd(hubName, client);
             }
 
             using EventDataBatch eventBatch = await client.CreateBatchAsync();

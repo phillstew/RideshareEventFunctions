@@ -1,0 +1,56 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div>
+    <h1>Azure SignalR Serverless Sample</h1>
+    <div id="messages"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.7/signalr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        let messages = document.querySelector('#messages');
+        let messages1 = document.querySelector('#messages-1');
+
+        let userID = "phillID";
+
+        axios.get("https://phill-testdev.azurewebsites.net" + `/api/negotiate?userid=${userID}`).then(response => {
+            const options = {
+                accessTokenFactory: () => response.data.accessToken
+            }
+            const connection = new signalR.HubConnectionBuilder()
+                .withUrl(response.data.url, options)
+                .build(signalR.HttpTransportType.None)
+
+            connection.on('stateUpdated', (data) => {
+                document.getElementById("messages").innerHTML = data;
+            });
+            connection.onclose(() => console.log('disconnected'));
+            console.log('connecting...');
+
+            connection.start({ withCredentials: false })
+                .then(
+                    async () => {
+                        console.log('ready...');
+                        var val = await connection.invoke("subscribeToRide", "ride-0", userID)
+                            .catch(console.error);
+                        console.log(val);
+                    })
+                .catch(console.error);
+        });
+
+        //const connection = new signalR.HubConnectionBuilder()
+        //    .withUrl("http://localhost:7071/api/negotiate")
+        //    .configureLogging(signalR.LogLevel.Information)
+        //    .build();
+
+        //connection.on('ride-0', (message) => {
+        //    document.getElementById("messages").innerHTML = message;
+        //});
+
+        //connection.start()
+        //    .catch(console.error);
+    </script>
+</div>
