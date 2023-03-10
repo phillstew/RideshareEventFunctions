@@ -20,7 +20,7 @@ namespace RideshareEventFunctions.EventHubFunctions
         }
 
         [Function("CreateRide")]
-        public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequestData req)
+        public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req)
         {
             _logger.LogInformation("CreateRide Http function entered");
 
@@ -30,7 +30,7 @@ namespace RideshareEventFunctions.EventHubFunctions
                 RideId = new Random().Next(0, 100),
                 DateTimeCreated = DateTime.Now
             };
-            _eventProducer.SendEvent(hubName, ride); // todo: correct Event to send?
+            await _eventProducer.SendEvent(hubName, ride); // todo: correct Event to send?
 
             var msg = string.Format("EventHub Event sent: {0} with id {1} at {2}", hubName, ride.RideId, ride.DateTimeCreated);
             _logger.LogInformation(msg);
