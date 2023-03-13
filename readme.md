@@ -6,6 +6,16 @@ Clone the repository and open in Visual Studio 2022 (or latest). Visual studio i
 
 To run the functions locally you should be able to set the `RideShareEventFunctions` project to the startup proejct, hit the "Start Debugging" button to run the project and you will see a console window with all of the functions in the project being initialized. From here you can call any of the HTTP methods or send event hub messages to trigger the functions. 
 
+## Testing SignalR Serverless locally
+
+In order to test your SignalR connection that we will create later on in this readme, you will need to setup and publish your azure functions in an actual azure environment.
+
+Right click the `RideShareEventFunctions` project and click `Publish`. In the next steps we'll want to select `Azure` -> `Azure Function App (Windows)` -> Create New Function App Instance.
+
+Here you will select your own resource group as well as create a new azure storage instance as well as a new application insights(or select one you'd like to use).
+
+Once this publish profile has been created. Click the `Publish` button on the screen and wait for it to be deployed. Now you can navigate to the `Function App` you just deployed via the azure portal. 
+
 ## Local configuration
 
 In the file `settings.local.json` there are two settings:
