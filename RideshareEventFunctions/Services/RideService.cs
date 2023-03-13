@@ -27,17 +27,27 @@ namespace RideshareEventFunctions.Services
 
         public Task<Driver> FindDriverForRide(int rideId)
         {
-            throw new NotImplementedException();
+            // todo: Connect to database and perform actual search
+
+            return Task.FromResult(new Driver { EmailAddress = "test@tester.com", Name = "John Smith", DriverID = 1 });
         }
 
         public Task<Ride> GetRide(int rideId)
         {
-            throw new NotImplementedException();
+            // todo: pull from DB
+
+            return Task.FromResult(new Ride { RideId = rideId });
         }
 
-        public Task UpdateRideStatus(Ride ride, string status)
+        public async Task<Ride> UpdateRideStatus(int rideId, string status)
         {
-            throw new NotImplementedException();
+            var ride = await GetRide(rideId);
+
+            ride.Status = status;
+
+            // Update DB record
+
+            return ride;
         }
     }
 }

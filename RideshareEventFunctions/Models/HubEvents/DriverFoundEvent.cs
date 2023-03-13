@@ -10,6 +10,8 @@ namespace RideshareEventFunctions.Models.HubEvents
     {
         public int DriverId { get; set; }
 
+        public int RideId { get; set; }
+
         public DateTimeOffset DateTimeCreated { get; set; } = DateTimeOffset.Now;
     }
 }

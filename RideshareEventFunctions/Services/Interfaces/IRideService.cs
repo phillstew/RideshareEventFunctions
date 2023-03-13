@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RideshareEventFunctions.Services.Interfaces
 {
-    internal interface IRideService
+    public interface IRideService
     {
         /// <summary>
         /// Gets information about a ride
@@ -27,10 +27,10 @@ namespace RideshareEventFunctions.Services.Interfaces
         /// <summary>
         /// Updates a Ride to a new status
         /// </summary>
-        /// <param name="ride"></param>
+        /// <param name="rideId"></param>
         /// <param name="status"></param>
         /// <returns></returns>
-        Task UpdateRideStatus(Ride ride, string status);
+        Task<Ride> UpdateRideStatus(int rideId, string status);
 
         /// <summary>
         /// Assigns a driver to a ride and updates the Ride with that new information

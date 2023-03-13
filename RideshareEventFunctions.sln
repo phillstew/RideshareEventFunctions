@@ -7,6 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RideshareEventFunctions", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RideshareEventFunctions.Tests", "RideshareEventFunctions.Tests\RideshareEventFunctions.Tests.csproj", "{52F0616F-3B72-4DA4-BFEF-95F0689E0CC0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRTestClient", "SignalRTestClient\SignalRTestClient.csproj", "{CC9EADFC-0DB1-4E37-B474-ED1478393B24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHubTestConsole", "EventHubTestConsole\EventHubTestConsole.csproj", "{C8CAA968-AAE2-4D6D-974B-CE6C360DA1CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DemoProjects", "DemoProjects", "{3B207E6D-694D-4AF2-B847-8420873F645A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +27,21 @@ Global
 		{52F0616F-3B72-4DA4-BFEF-95F0689E0CC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52F0616F-3B72-4DA4-BFEF-95F0689E0CC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52F0616F-3B72-4DA4-BFEF-95F0689E0CC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC9EADFC-0DB1-4E37-B474-ED1478393B24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC9EADFC-0DB1-4E37-B474-ED1478393B24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC9EADFC-0DB1-4E37-B474-ED1478393B24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC9EADFC-0DB1-4E37-B474-ED1478393B24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8CAA968-AAE2-4D6D-974B-CE6C360DA1CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8CAA968-AAE2-4D6D-974B-CE6C360DA1CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8CAA968-AAE2-4D6D-974B-CE6C360DA1CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8CAA968-AAE2-4D6D-974B-CE6C360DA1CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CC9EADFC-0DB1-4E37-B474-ED1478393B24} = {3B207E6D-694D-4AF2-B847-8420873F645A}
+		{C8CAA968-AAE2-4D6D-974B-CE6C360DA1CD} = {3B207E6D-694D-4AF2-B847-8420873F645A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {90521C17-529B-497E-9595-8F11A1FA5D65}
