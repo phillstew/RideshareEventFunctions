@@ -20,14 +20,14 @@ namespace RideshareEventFunctions.EventHubFunctions
         }
 
         [Function("CreateRide")]
-        public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req)
+        public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequestData req, int rideId)
         {
             _logger.LogInformation("CreateRide Http function entered");
 
             var hubName = "ridecreated";
             var ride = new RideCreatedEvent()
             {
-                RideId = new Random().Next(0, 100),
+                RideId = rideId,
                 DateTimeCreated = DateTime.Now
             };
             await _eventProducer.SendEvent(hubName, ride); // todo: correct Event to send?
@@ -35,10 +35,7 @@ namespace RideshareEventFunctions.EventHubFunctions
             var msg = string.Format("EventHub Event sent: {0} with id {1} at {2}", hubName, ride.RideId, ride.DateTimeCreated);
             _logger.LogInformation(msg);
 
-            var response = req.CreateResponse(HttpStatusCode.OK); // todo: what response to send?
-            response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
-
-            response.WriteString(msg);
+            var response = req.CreateResponse(HttpStatusCode.OK);
 
             return response;
         }
